@@ -1,6 +1,3 @@
-const fs = require('fs');
-const path = require('path');
-
 const express = require('express');
 
 const app = express();
@@ -18,17 +15,9 @@ app.get("/", function (req, res) {
 });
 
 app.post('/store-user', function (req, res) {
-  const userName = req.body.username;
-
-  // __dirname: 절대경로가 내장된 변수 또는 상수
-  const filePath = path.join(__dirname, "data", "users.json");
-  const fileData = fs.readFileSync(filePath);
-  const existingUsers = JSON.parse(fileData); // js배열로 변환
-
-  existingUsers.push(userName); // 배열 추가 ,
-  fs.writeFileSync(filePath, JSON.stringify(existingUsers)); // 제이슨 형식을 따르는 원시 텍스트로 변환
-
-  res.send("<h1>UserName stored!</h1>");
+    const userName = req.body.username;
+    console.log(userName);
+    res.send('<h1>UserName stored!</h1>');
 })
 
 app.listen(4000);
