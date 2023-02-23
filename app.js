@@ -4,6 +4,8 @@ const express = require('express');
 
 const app = express();
 
+app.use(express.static('public')); // 제공하려는 정적 파일을 보관해야하는 프로젝트의 폴더 이름
+
 app.get('/', function(req, res) {
     const htmlFilePath = path.join(__dirname, "views", "index.html");
     res.sendFile(htmlFilePath);
